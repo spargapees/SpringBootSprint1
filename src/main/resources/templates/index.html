@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="main_layout.html">
+<link rel="stylesheet" type = "text/css" th:href="@{'/css/bootstrap.min.css'}">
+<script type="text/javascript" th:src="@{'/css/bootstrap.bundle.js'}"></script>
+
+<div class = "cpontainer-fluid">
+    <div th:insert = "navbar.html">
+    </div>
+</div>
+
+<div class = "container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+            <th>EXAM</th>
+            <th>MARK</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${studentArrayList}" th:style="${(student.getExam() < 50) ? 'color: red;' : ''}" >
+            <th  th:text="${student.getId()}"></th>
+            <th  th:text="${student.getName()}"></th>
+            <th  th:text="${student.getSurname()}"></th>
+            <th  th:text="${student.getExam()}"></th>
+            <th  th:text="${student.getMark()}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
